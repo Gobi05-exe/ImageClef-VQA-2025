@@ -110,32 +110,35 @@ for item in data["rows"]:
         ).to("cuda")
 
         # Inference
-        generated_ids = model.generate(**inputs, max_new_tokens=256)
-        response = processor.batch_decode(generated_ids, skip_special_tokens=True)
-        text = response[0]
-        
-        # Find the last occurrence of 'assistant' and get everything after it
-        last_assistant_index = text.rfind("assistant")
-        
-        if last_assistant_index != -1:
-            # Extract text after 'assistant'
-            response = text[last_assistant_index + len("assistant"):].strip()
-        else:
-            response = text.strip()  # fallback if 'assistant' not found
-        
-        clean_response = extract_answer(response)
+        with torch.no_grad():
+            generated_ids = model.generate(**inputs, max_new_tokens=256)
+            response = processor.batch_decode(generated_ids, skip_special_tokens=True)
+            text = response[0]
+            
+            # Find the last occurrence of 'assistant' and get everything after it
+            last_assistant_index = text.rfind("assistant")
+            
+            if last_assistant_index != -1:
+                # Extract text after 'assistant'
+                response = text[last_assistant_index + len("assistant"):].strip()
+            else:
+                response = text.strip()  # fallback if 'assistant' not found
+            
+            clean_response = extract_answer(response)
 
-        #print(f"[{sample_id}] → {clean_response}")
-        
-        print(f"id : {sample_id}\nlanguage : {language}\nanswer_key : {clean_response}\n")
+            #print(f"[{sample_id}] → {clean_response}")
+            
+            print(f"id : {sample_id}\nlanguage : {language}\nanswer_key : {clean_response}\n")
 
-        # Save result
-        results.append({
-            "id": sample_id,
-            "language": language,
-            "answer_key": clean_response
-        })
+            # Save result
+            results.append({
+                "id": sample_id,
+                "language": language,
+                "answer_key": clean_response
+            })
 
+        #Clean up
+        del inputs, generated_ids, response, image_inputs, video_inputs
         # Free GPU memory
         torch.cuda.empty_cache()
 
