@@ -133,8 +133,8 @@ for item in data["rows"]:
             # Save result
             results.append({
                 "id": sample_id,
+                "answer_key": clean_response,
                 "language": language,
-                "answer_key": clean_response
             })
 
         #Clean up
