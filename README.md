@@ -1,4 +1,4 @@
-# EXAMS-V Visual Question Answering
+# ImageCLEF MultimodalReasoning
 
 This project performs visual question answering (VQA) on the EXAMS-V dataset, a dataset of visual multiple-choice exam questions. The goal is to download the dataset, fetch associated images, and run a state-of-the-art vision-language model to predict answers to the exam questions.
 
