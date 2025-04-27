@@ -1,6 +1,6 @@
 # ImageCLEF MultimodalReasoning
 
-ImageCLEF MultimodalReasoning (1st edition): Vision-Language Models (VLMs) excel in tasks combining vision and language, like image captioning and basic visual question answering. However, they often falter in deep logical reasoning and handling complex dependencies or hypothetical scenarios. This task aims to evaluate modern LLMs' reasoning abilities on intricate, multilingual inputs across diverse subjects.
+ImageCLEF MultimodalReasoning (1st edition) : Vision-Language Models (VLMs) excel in tasks combining vision and language, like image captioning and basic visual question answering. However, they often falter in deep logical reasoning and handling complex dependencies or hypothetical scenarios. This task aims to evaluate modern LLMs' reasoning abilities on intricate, multilingual inputs across diverse subjects.
 
 This project performs visual question answering (VQA) on the EXAMS-V dataset, a dataset of visual multiple-choice exam questions. The goal is to download the dataset, fetch associated images, and run a state-of-the-art vision-language model to predict answers to the exam questions.
 
