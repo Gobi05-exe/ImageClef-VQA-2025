@@ -1,4 +1,4 @@
-# ImageCLEF MultimodalReasoning
+# ImageCLEF MultimodalReasoning .
 
 (1st edition) ImageCLEF MultimodalReasoning: Vision-Language Models (VLMs) excel in tasks combining vision and language, like image captioning and basic visual question answering. However, they often falter in deep logical reasoning and handling complex dependencies or hypothetical scenarios. This task aims to evaluate modern LLMs' reasoning abilities on intricate, multilingual inputs across diverse subjects.
 
