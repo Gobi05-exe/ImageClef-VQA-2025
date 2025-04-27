@@ -186,10 +186,10 @@ for item in data["rows"]:
         torch.cuda.empty_cache()
 
     except Exception as e:
-        print(f"❌ Error processing {sample_id}: {e}")
+        print(f" Error processing {sample_id}: {e}")
 
 # Save all predictions to output file
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(results, f, indent=2)
 
-print(f"✅ Saved {len(results)} predictions to {OUTPUT_FILE}")
+print(f" Saved {len(results)} predictions to {OUTPUT_FILE}")

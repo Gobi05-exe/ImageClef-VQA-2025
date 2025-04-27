@@ -64,12 +64,12 @@ def fetch_rows(offset):
             if response.status_code == 200:
                 return response.json()
             else:
-                print(f"⚠️  Error {response.status_code} at offset {offset}, retrying...")
+                print(f"  Error {response.status_code} at offset {offset}, retrying...")
         except requests.RequestException as e:
-            print(f"⚠️  Request failed: {e}")
+            print(f"  Request failed: {e}")
         retries += 1
         time.sleep(2 ** retries)  # exponential backoff
-    raise Exception(f"❌ Failed to fetch offset {offset} after {MAX_RETRIES} retries.")
+    raise Exception(f" Failed to fetch offset {offset} after {MAX_RETRIES} retries.")
 
 def main():
     """
@@ -84,7 +84,7 @@ def main():
     offset = 0
     features = None
 
-    print("🚀 Starting download of test split...")
+    print(" Starting download of test split...")
 
     # Loop over dataset until all rows are fetched
     while offset < TOTAL_ROWS:
@@ -98,14 +98,14 @@ def main():
         # Extract and collect rows
         rows = data.get("rows", [])
         if not rows:
-            print(f"⚠️  No rows returned at offset {offset}. Stopping.")
+            print(f"  No rows returned at offset {offset}. Stopping.")
             break
         all_rows.extend(rows)
         
         offset += MAX_LENGTH
         time.sleep(0.25)  # polite wait to avoid rate-limiting
 
-    print(f"✅ Downloaded {len(all_rows)} rows.")
+    print(f"Downloaded {len(all_rows)} rows.")
 
     # Prepare final dataset dictionary
     final_data = {
@@ -117,7 +117,7 @@ def main():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(final_data, f, indent=2)
 
-    print(f"📦 Saved to {OUTPUT_FILE}")
+    print(f" Saved to {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()

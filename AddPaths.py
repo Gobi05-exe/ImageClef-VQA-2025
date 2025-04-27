@@ -48,9 +48,9 @@ def download_image(url, save_path):
                 f.write(response.content)
             return True
         else:
-            print(f"❌ Failed to download {url}: Status {response.status_code}")
+            print(f" Failed to download {url}: Status {response.status_code}")
     except Exception as e:
-        print(f"⚠️ Error downloading {url}: {e}")
+        print(f" Error downloading {url}: {e}")
     return False
 
 def main():
@@ -83,7 +83,7 @@ def main():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
 
-    print(f"✅ Done! Images saved in '{IMAGE_DIR}' and new JSON in '{OUTPUT_FILE}'")
+    print(f" Done! Images saved in '{IMAGE_DIR}' and new JSON in '{OUTPUT_FILE}'")
 
 if __name__ == "__main__":
     main()
